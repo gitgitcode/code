@@ -7,17 +7,21 @@ import (
 )
 
 // user defines a user in the program.
+//定义一个用户类型
 type user struct {
 	name  string
 	email string
 }
 
 // notify implements a method with a value receiver.
+//使用值接受者实现一个方法
 func (u user) notify() {
 	fmt.Printf("Sending User Email To %s<%s>\n",
 		u.name,
 		u.email)
 }
+//值接收者 
+//指针接受者
 
 // changeEmail implements a method with a pointer receiver.
 func (u *user) changeEmail(email string) {
