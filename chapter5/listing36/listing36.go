@@ -8,7 +8,7 @@ import (
 // notifier is an interface that defined notification
 // type behavior.
 type notifier interface {
-	notify()
+	notify()//行为
 }
 
 // user defines a user in the program.
@@ -29,12 +29,15 @@ func main() {
 	// Create a value of type User and send a notification.
 	u := user{"Bill", "bill@email.com"}
 
-	sendNotification(u)
-
+	sendNotification(u)//u没有实现 使用 sendNotification(&u)
+	
+	//不能将 u 类型是user 作为 sendNotification的参数类型
+	//user 类型咩有实现notifier 
 	// ./listing36.go:32: cannot use u (type user) as type
 	//                     notifier in argument to sendNotification:
 	//   user does not implement notifier
 	//                          (notify method has pointer receiver)
+	//notify方法使用指针接收者声明
 }
 
 // sendNotification accepts values that implement the notifier
@@ -42,3 +45,4 @@ func main() {
 func sendNotification(n notifier) {
 	n.notify()
 }
+//接收 notifier 接口类型的值 之后接口调用n.notify方法
