@@ -20,6 +20,8 @@ func init() {
 // main is the entry point for the application.
 func main() {
 	// Get a response from the web server.
+	//Get 返回一个http response 类型指针包含一个Body的字段
+	//Body是io。ReadCloser接口类型的值
 	r, err := http.Get(os.Args[1])
 	if err != nil {
 		fmt.Println(err)
